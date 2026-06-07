@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "note": "Descriptive population distributions, NOT ideals or targets. A metric is read as a percentile within the user's own (population, sex, age) cohort. Values are direct/photogrammetric anthropometry in millimetres (mean, sd). Cells are omitted where no cited value exists; sd=null means a mean is published but no standard deviation, so a percentile cannot be computed honestly. Adult band 18-45 only in v1; aging adjustment is future work.",
+  "note": "Descriptive population distributions, NOT ideals or targets. A metric is read as a percentile within the user's own (population, sex, age) cohort. Values are direct/photogrammetric anthropometry in millimetres (mean, sd). Cells are omitted where no cited value exists; sd=null means a mean is published but no standard deviation, so a percentile cannot be computed honestly. Norm cells are the adult 18-45 band; for ages outside it, see 'age_effects' (an evidence-graded mean shift applied per metric, with the rest flagged 'outside_band').",
   "metrics": {
     "intercanthal_width": {"label": "Intercanthal width (en-en)", "unit": "mm", "grade": "A"},
     "nasal_width": {"label": "Nasal width (al-al)", "unit": "mm", "grade": "B"},
@@ -9,6 +9,17 @@
     "bizygomatic_width": {"label": "Face width (zy-zy)", "unit": "mm", "grade": "C"},
     "facial_height": {"label": "Morphological face height (n-gn)", "unit": "mm", "grade": "B"},
     "mouth_width": {"label": "Mouth width (ch-ch)", "unit": "mm", "grade": "A"}
+  },
+  "age_effects": {
+    "_note": "Per-year change in the cohort MEAN from cross-sectional aging studies, applied as a mean SHIFT only when age falls outside the 18-45 norm band. SD is left intact (there is no honest basis to re-scale dispersion). These are directional, evidence-graded population trends, NOT an individual prediction. Metrics with no entry here stay flagged 'outside_band' rather than guess.",
+    "_ref_age": 31,
+    "_menopause": {"sex": "female", "onset_age": 51, "accel_factor": 1.5, "source": "Windhager 2019, accelerated post-menopausal soft-tissue facial aging (Am J Phys Anthropol, doi:10.1002/ajpa.23878)"},
+    "metrics": {
+      "nasal_width":        {"per_year_mm": 0.06, "grade": "B", "source": "Nasal base widens across adulthood (~+4 mm over the adult lifespan), Sforza/Farkas aging anthropometry"},
+      "nasal_height":       {"per_year_mm": 0.05, "grade": "B", "source": "Nose lengthens with age, longitudinal/cross-sectional facial anthropometry"},
+      "eye_fissure_length": {"per_year_mm": -0.04, "grade": "C", "source": "Palpebral fissure shortens with age (orbital soft-tissue change); magnitude heterogeneous"},
+      "mouth_width":        {"per_year_mm": 0.03, "grade": "C", "source": "Mild oral-commissure widening with age; weak/heterogeneous evidence"}
+    }
   },
   "populations": {
     "european_naw": {"label": "European (North American White)", "source_id": "naw"},

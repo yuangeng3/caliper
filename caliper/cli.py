@@ -169,6 +169,8 @@ def _norm_dict(nr) -> dict | None:
         "status": nr.status, "population": nr.population_label,
         "mean": nr.mean, "sd": nr.sd, "z": nr.z, "percentile": nr.percentile,
         "source": nr.source, "message": nr.message,
+        "age_adjusted": nr.age_adjusted, "adjusted_mean": nr.adjusted_mean,
+        "age_grade": nr.age_grade, "age_source": nr.age_source,
     }
 
 

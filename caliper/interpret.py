@@ -68,7 +68,8 @@ def _interpret_metric(m, nr, info: dict) -> Item:
         pct = nr.percentile
         typical = 15 <= pct <= 85
         edge = "" if typical else " — toward the edge, still normal variation"
-        standing = f"{_ord(pct)} percentile for {nr.population_label}{edge}"
+        age_adj = " (age-adjusted)" if getattr(nr, "age_adjusted", False) else ""
+        standing = f"{_ord(pct)} percentile for {nr.population_label}{age_adj}{edge}"
         notable = not typical
     elif "bands" in info:
         standing = _band_label(m.value, info["bands"]) + " (general range)"

@@ -171,7 +171,33 @@ def test_norm_missing_metric_and_population():
 
 
 def test_norm_outside_age_band_flagged():
+    # intercanthal_width has NO recorded aging trend -> still flagged, not silently "adjusted"
     data = norms.load()
     r = norms.evaluate("intercanthal_width", 33.0, "european", "male", 67, data)
     assert r.status == "outside_band"
+    assert r.age_adjusted is False
     assert r.percentile is not None  # still computed, but flagged
+
+
+def test_norm_age_conditioning_adjusts_mean():
+    # nasal_width widens with age: a 67yo's expected mean shifts up, so the same value
+    # reads as median-ish for his age instead of high-percentile against 30yo norms.
+    data = norms.load()
+    old = norms.evaluate("nasal_width", 37.06, "european", "male", 67, data)
+    assert old.age_adjusted is True
+    assert old.status == "ok"
+    assert old.adjusted_mean == pytest.approx(34.9 + 0.06 * (67 - 31), abs=1e-6)  # ~37.06
+    assert old.percentile == pytest.approx(50.0, abs=2.0)  # at its age-adjusted mean -> median
+    young = norms.evaluate("nasal_width", 37.06, "european", "male", 30, data)
+    assert young.age_adjusted is False          # within band: no shift
+    assert young.percentile > 80                # same value reads high vs 30yo norms
+
+
+def test_norm_menopause_acceleration():
+    # women get an extra post-menopause acceleration term beyond the flat slope
+    data = norms.load()
+    f = norms.evaluate("nasal_width", 33.0, "european", "female", 67, data)
+    assert f.age_adjusted is True
+    flat = 31.4 + 0.06 * (67 - 31)              # mean shift without acceleration
+    assert f.adjusted_mean > flat + 0.1          # acceleration adds beyond the flat trend
+    assert f.age_source                          # carries the Windhager citation

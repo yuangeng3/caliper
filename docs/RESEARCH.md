@@ -60,7 +60,7 @@ Kenyan, Hong Kong/Han Chinese, Iranian, and Gujarati cohorts. Highlights:
 - **Nasal width (al-al)** is the single most ancestry-discriminating metric: NAW male 34.9 mm vs African American 44.1 mm vs Kenyan 43.2 mm.
 - **Intercanthal width (en-en)**: East Asian largest (HK Chinese male 40.6 mm) — the rule of fifths systematically fails there.
 - **Bizygomatic width** is the *least* ancestry-variable → used as a normalizer.
-- **Aging** is quantifiable (orbital aperture widens, nasal width +~4 mm, glabellar/maxillary angles flatten 2–5°, lips thin), with a sharp **post-menopause** acceleration in women (Windhager 2019) → age-conditioning is future work.
+- **Aging** is quantifiable (orbital aperture widens, nasal width +~4 mm, glabellar/maxillary angles flatten 2–5°, lips thin), with a sharp **post-menopause** acceleration in women (Windhager 2019). **Shipped (Jun 2026):** `age_effects` in `frontal_anthropometry.json` shifts the expected *mean* (SD untouched — no honest basis to rescale dispersion) for ages outside the 18–45 band, per metric and evidence-graded, with a female post-menopause acceleration term; metrics without a recorded trend stay flagged `outside_band` rather than guess. A 67yo's nasal width now reads ~median for his age instead of a spurious 90th percentile.
 - **Ancestry is self-reported**, descriptive, never auto-classified as fact (FairFace race accuracy ~81.5%).
 
 Sources: [Kenyan/AfAm/NAW PMC6384287](https://pmc.ncbi.nlm.nih.gov/articles/PMC6384287/),
