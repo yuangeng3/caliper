@@ -1,0 +1,33 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "caliper-face"
+version = "0.1.0"
+description = "Honest, ancestry/age/sex-aware, fully-local facial geometry & skin self-analysis. No universal ideal, no cloud, no single score."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "Apache-2.0" }
+keywords = [
+  "facial-anthropometry", "mediapipe", "dermatology",
+  "quantified-self", "privacy", "local-first",
+]
+dependencies = [
+  "mediapipe>=0.10.14",
+  "opencv-python>=4.9.0",
+  "numpy>=1.24",
+  "pillow>=10.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "ruff>=0.5"]
+
+[project.scripts]
+caliper = "caliper.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["caliper"]
+
+[tool.ruff]
+line-length = 100

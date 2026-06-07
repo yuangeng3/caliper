@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "note": "SOFT-TISSUE profile norms (mm, degrees) by population x sex. No skeletal angle is included or recoverable from a photo. Same schema as the frontal table so norms.evaluate is reused. v0.1 ships European + East Asian (cited); other cohorts return 'no reference' rather than borrow another group's norms.",
+  "metrics": {
+    "e_line_ul": {"label": "Upper lip to E-line", "unit": "mm", "grade": "A"},
+    "e_line_ll": {"label": "Lower lip to E-line", "unit": "mm", "grade": "A"},
+    "nasolabial_angle": {"label": "Nasolabial angle", "unit": "deg", "grade": "A"},
+    "facial_convexity": {"label": "Facial convexity (G-Sn-Pog')", "unit": "deg", "grade": "A"}
+  },
+  "populations": {
+    "european": {"label": "European / Caucasian", "source_id": "legan_burstone"},
+    "east_asian": {"label": "East Asian", "source_id": "east_asian_profile"}
+  },
+  "sources": {
+    "legan_burstone": {"citation": "Legan-Burstone Euro-American soft-tissue norms (PMC3606791); Ricketts E-line", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3606791/"},
+    "east_asian_profile": {"citation": "Malay E-line (IIUM); NE Chinese nasolabial; Korean facial convexity 7.7+/-3.9", "url": "https://journals.iium.edu.my/ktn/index.php/ijohs/article/view/164"}
+  },
+  "norms": {
+    "european": {
+      "male": {"18-45": {
+        "e_line_ul": {"mean": -4.0, "sd": 2.0},
+        "e_line_ll": {"mean": -2.0, "sd": 2.0},
+        "nasolabial_angle": {"mean": 102.0, "sd": 8.0},
+        "facial_convexity": {"mean": 12.0, "sd": 4.0}
+      }},
+      "female": {"18-45": {
+        "e_line_ul": {"mean": -4.0, "sd": 2.0},
+        "e_line_ll": {"mean": -2.0, "sd": 2.0},
+        "nasolabial_angle": {"mean": 102.0, "sd": 8.0},
+        "facial_convexity": {"mean": 12.0, "sd": 4.0}
+      }}
+    },
+    "east_asian": {
+      "male": {"18-45": {
+        "e_line_ul": {"mean": -1.3, "sd": 2.0},
+        "e_line_ll": {"mean": 0.2, "sd": 1.9},
+        "nasolabial_angle": {"mean": 85.0, "sd": 8.0},
+        "facial_convexity": {"mean": 7.7, "sd": 3.9}
+      }},
+      "female": {"18-45": {
+        "e_line_ul": {"mean": -1.3, "sd": 2.0},
+        "e_line_ll": {"mean": 0.2, "sd": 1.9},
+        "nasolabial_angle": {"mean": 88.0, "sd": 8.0},
+        "facial_convexity": {"mean": 7.7, "sd": 3.9}
+      }}
+    }
+  },
+  "ancestry_map": {
+    "european": {"population": "european"},
+    "middle_eastern": {"population": "european"},
+    "east_asian": {"population": "east_asian"}
+  }
+}

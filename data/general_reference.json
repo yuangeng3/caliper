@@ -1,0 +1,59 @@
+{
+  "note": "Plain-language names + general (ancestry-agnostic) reference bands, used to make every number understandable and to replace 'no reference for your cohort' with a meaningful category when population data is thin. Bands for shape indices/angles are descriptive anthropology, not ideals.",
+  "metrics": {
+    "canthal_tilt": {
+      "plain_name": "Eye tilt", "what": "whether your outer eye corners sit higher or lower than the inner corners",
+      "unit": "°", "actionable": false,
+      "bands": [{"max": -2, "label": "slight downward tilt"}, {"max": 4, "label": "neutral / level"}, {"max": 999, "label": "upward (\"cat-eye\") tilt"}],
+      "meaning": "a stable feature of your eye shape — nothing to act on."
+    },
+    "intercanthal_width": {"plain_name": "Eye spacing", "what": "how far apart your eyes are", "unit": "mm", "actionable": false},
+    "fifth_intercanthal": {
+      "plain_name": "Eye spacing vs. eye width", "what": "your inner-eye gap compared to the width of one eye",
+      "unit": "", "actionable": false,
+      "bands": [{"max": 0.9, "label": "closer-set than one eye-width"}, {"max": 1.1, "label": "about one eye-width (average)"}, {"max": 999, "label": "wider-set than one eye-width"}],
+      "meaning": "normal variation in eye spacing."
+    },
+    "eye_fissure_length": {"plain_name": "Eye length", "what": "how long each eye opening is", "unit": "mm", "actionable": false},
+    "nasal_width": {"plain_name": "Nose width", "what": "the width across your nostrils", "unit": "mm", "actionable": false},
+    "nasal_height": {"plain_name": "Nose length", "what": "from the bridge to the base of your nose", "unit": "mm", "actionable": false},
+    "nasal_index": {
+      "plain_name": "Nose shape", "what": "nose width relative to its length", "unit": "", "actionable": false,
+      "bands": [{"max": 70, "label": "narrow"}, {"max": 85, "label": "medium"}, {"max": 999, "label": "broad"}],
+      "meaning": "varies a lot by ancestry; purely descriptive."
+    },
+    "mouth_width": {"plain_name": "Mouth width", "what": "the width of your mouth", "unit": "mm", "actionable": false},
+    "bizygomatic_width": {"plain_name": "Face width", "what": "the width across your cheekbones (approximate)", "unit": "mm", "actionable": false, "approximate": true},
+    "facial_height": {"plain_name": "Face length", "what": "from the bridge of your nose to your chin", "unit": "mm", "actionable": false},
+    "facial_index": {
+      "plain_name": "Face shape", "what": "face length relative to face width", "unit": "", "actionable": false, "approximate": true,
+      "bands": [{"max": 84, "label": "broad / round"}, {"max": 88, "label": "medium"}, {"max": 93, "label": "oval"}, {"max": 999, "label": "long / narrow"}],
+      "meaning": "describes overall face shape; no shape is better."
+    },
+    "third_upper": {"plain_name": "Forehead proportion", "what": "the top third of your face", "unit": "%", "actionable": false, "approximate": true, "unreliable": true, "meaning": "unreliable from a photo — the camera can't see your hairline."},
+    "third_middle": {"plain_name": "Mid-face proportion", "what": "brow-to-nose-base third", "unit": "%", "actionable": false},
+    "third_lower": {"plain_name": "Lower-face proportion", "what": "nose-base-to-chin third", "unit": "%", "actionable": false},
+    "fwhr": {"plain_name": "Face width-to-height", "what": "how wide your face is relative to its upper height", "unit": "", "actionable": false, "approximate": true},
+    "ipd": {"plain_name": "Pupil distance", "what": "the distance between your pupils (used to calibrate the ruler)", "unit": "mm", "actionable": false}
+  },
+  "skin_by_ancestry": {
+    "_pigment_first": ["east_asian", "south_asian", "african", "african_american", "middle_eastern"],
+    "pigment_first": {
+      "summary": "Your skin's main pattern is pigment-first — uneven tone, sun spots, and melasma show up before deep wrinkles.",
+      "watch": ["uneven tone & dark spots (sun-induced)", "post-inflammatory marks after blemishes", "melasma"],
+      "interventions": ["sunscreen_daily", "azelaic_acid", "tranexamic_acid", "niacinamide", "tretinoin"],
+      "prevent": "PIH prevention is higher-leverage than treatment here: treat breakouts early, don't pick or squeeze, and keep daily sunscreen non-negotiable — UV deepens and prolongs every mark."
+    },
+    "photoaging_first": {
+      "summary": "Your skin's main pattern is photoaging-first — fine lines, redness, and sun damage tend to lead.",
+      "watch": ["fine lines & loss of firmness", "redness / broken capillaries", "sun (actinic) damage"],
+      "interventions": ["sunscreen_daily", "tretinoin", "vitamin_c_topical"]
+    },
+    "ancestry_notes": {
+      "east_asian": [
+        "Wrinkles typically lag ~a decade in East Asian skin — tone evenness, not fine lines, is your highest-leverage axis. Don't over-index on lines.",
+        "East Asian skin tends to be drier (lower natural moisturizing factor) and more reactive — ramp actives slowly, patch-test new products, and pair them with a barrier moisturizer."
+      ]
+    }
+  }
+}

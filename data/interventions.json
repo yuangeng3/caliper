@@ -1,0 +1,85 @@
+{
+  "note": "Evidence-graded map of interventions to the facial/skin metrics they measurably move. Grades are Attia-style: A = strong RCT/meta-analysis with a measurable facial endpoint; B = real but heterogeneous or transient; C = weak/single small study; D = no measurable effect (we say so and refuse to attribute metric change to it).",
+  "interventions": {
+    "tretinoin": {
+      "grade": "A", "label": "Topical tretinoin (retinoid)",
+      "affects": ["skin texture", "fine & coarse wrinkles", "mottled pigmentation"],
+      "time_weeks": [4, 104],
+      "note": "Meta-analysis of 8 RCTs (n=1361): significant wrinkle/texture/pigment improvement; visible ~1 month, durable to 24 months.",
+      "source": "Tretinoin meta-analysis, DPC 2024"
+    },
+    "azelaic_acid": {
+      "grade": "B", "label": "Azelaic acid 15-20%",
+      "affects": ["melasma", "post-inflammatory hyperpigmentation", "tone evenness", "inflammatory acne"],
+      "time_weeks": [8, 24],
+      "note": "Tyrosinase inhibitor; 20% azelaic ~ comparable to 4% hydroquinone for melasma in RCTs, and safe in skin of color with low irritant-PIH risk. First-line for pigment-prone skin. Heterogeneous formulations -> grade B.",
+      "source": "Azelaic acid melasma RCTs / skin-of-color reviews"
+    },
+    "tranexamic_acid": {
+      "grade": "B", "label": "Tranexamic acid (topical / oral)",
+      "affects": ["melasma", "tone evenness"],
+      "time_weeks": [8, 24],
+      "note": "Targets the vascular/plasmin driver of melasma. Oral TXA has the strongest meta-analytic support but needs a clinician (clotting-risk screen); topical is milder. Real but route-dependent -> grade B.",
+      "source": "Tranexamic acid melasma meta-analyses"
+    },
+    "niacinamide": {
+      "grade": "B", "label": "Niacinamide 4-5%",
+      "affects": ["tone evenness", "post-inflammatory hyperpigmentation", "barrier / hydration"],
+      "time_weeks": [4, 12],
+      "note": "Blocks melanosome transfer to keratinocytes and supports the skin barrier; split-face RCTs show reduced hyperpigmentation and improved evenness. Well tolerated -> good for reactive/dry skin.",
+      "source": "Niacinamide hyperpigmentation split-face RCTs (Hakozaki 2002 et al.)"
+    },
+    "sunscreen_daily": {
+      "grade": "A", "label": "Daily broad-spectrum sunscreen",
+      "affects": ["photoaging (prevention)", "tone evenness"],
+      "time_weeks": [52, 234],
+      "note": "Hughes 2013 RCT (n=903, 4.5y): 24% less photoaging. PREVENTS accumulation; does not reverse existing damage.",
+      "source": "Hughes 2013, Annals of Internal Medicine"
+    },
+    "weight_change": {
+      "grade": "A", "label": "Weight change (within a healthy range)",
+      "affects": ["facial adiposity", "jaw/cheek definition"],
+      "threshold_bmi": 2.38,
+      "note": "Just-noticeable facial-adiposity change ~2.38 kg/m^2 BMI (women) / 2.59 (men) ~ 14/18 lb. Reveals existing bone structure; does not change bone.",
+      "source": "Re & Rule 2016"
+    },
+    "vitamin_c_topical": {
+      "grade": "B", "label": "Topical vitamin C",
+      "affects": ["erythema (UVB)", "collagen", "skin texture"],
+      "time_weeks": [8, 24],
+      "note": "~52% less UVB erythema; collagen I/III mRNA +25%/+21% in a split-face RCT. Downgraded for formulation heterogeneity (concentration/pH/vehicle).",
+      "source": "Topical vitamin C review, JCAD"
+    },
+    "moisturizer": {
+      "grade": "B", "label": "Moisturizer / hydration",
+      "affects": ["hydration", "fine lines (transient)"],
+      "note": "Real but TRANSIENT: corneometry effect lasts hours to ~24h, not durable structure. Timestamp any hydration/fine-line metric vs last application.",
+      "source": "Corneometry RCTs"
+    },
+    "sleep": {
+      "grade": "B", "label": "Sleep",
+      "affects": ["periorbital edema", "dark circles"],
+      "note": "Perceptual cue is strong (others rate sleep-deprived faces as more tired = grade A), but the OBJECTIVE measure is weak/high-variance: an n=181 RCT found no measured periorbital/skin-color change. High day-to-day swing; do not chase.",
+      "source": "Sundelin 2013 (perceptual) / Holding 2019 (objective)"
+    },
+    "facial_exercise": {
+      "grade": "C", "label": "Facial exercises",
+      "affects": ["cheek fullness (perceived)"],
+      "time_weeks": [20, 20],
+      "note": "One small uncontrolled study (~3 years younger perceived, enhanced cheek fullness). Weak but non-zero.",
+      "source": "Alam, JAMA Dermatology 2018"
+    },
+    "mewing": {
+      "grade": "D", "label": "Mewing / tongue posture (adults)",
+      "affects": [],
+      "note": "NO measurable effect on adult facial structure. Adult facial bone is set; the AAO cautions there is no clinical evidence. Caliper will not attribute any jaw-metric wiggle to mewing — it would be manufacturing a false success story.",
+      "source": "AAO; conservative-rejuvenation review"
+    },
+    "filler_botox": {
+      "grade": "A", "label": "Dermal filler / botulinum toxin (clinical)",
+      "affects": ["volume", "wrinkle scores"],
+      "note": "Clinical procedure requiring a provider. Evidence Level I-II including skin of color; combination beats toxin alone. Track its effect; it is not self-administered.",
+      "source": "Global Aesthetics Consensus"
+    }
+  }
+}

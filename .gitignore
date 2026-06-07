@@ -1,0 +1,47 @@
+# --- Caliper: privacy-first. NEVER commit user data or models. ---
+
+# User-generated biometric data (the whole point: this never leaves the device)
+*.caliper/
+profiles/
+sessions/
+*.faceprint
+examples/private/
+*.jpg
+*.jpeg
+*.png
+*.heic
+*.webp
+!docs/**/*.png        # allow docs/diagram assets
+!web/assets/**/*.png  # allow shipped UI assets
+
+# Downloaded ML model weights (fetched on first run, not vendored)
+*.task
+*.onnx
+*.tflite
+*.pth
+*.npz
+models/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Node / web
+node_modules/
+web/dist/
+.parcel-cache/
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+*.swp

@@ -1,0 +1,130 @@
+{
+  "schema_version": 1,
+  "note": "Descriptive population distributions, NOT ideals or targets. A metric is read as a percentile within the user's own (population, sex, age) cohort. Values are direct/photogrammetric anthropometry in millimetres (mean, sd). Cells are omitted where no cited value exists; sd=null means a mean is published but no standard deviation, so a percentile cannot be computed honestly. Adult band 18-45 only in v1; aging adjustment is future work.",
+  "metrics": {
+    "intercanthal_width": {"label": "Intercanthal width (en-en)", "unit": "mm", "grade": "A"},
+    "nasal_width": {"label": "Nasal width (al-al)", "unit": "mm", "grade": "B"},
+    "nasal_height": {"label": "Nasal height (n-sn)", "unit": "mm", "grade": "B"},
+    "eye_fissure_length": {"label": "Eye fissure length (ex-en)", "unit": "mm", "grade": "A"},
+    "bizygomatic_width": {"label": "Face width (zy-zy)", "unit": "mm", "grade": "C"},
+    "facial_height": {"label": "Morphological face height (n-gn)", "unit": "mm", "grade": "B"},
+    "mouth_width": {"label": "Mouth width (ch-ch)", "unit": "mm", "grade": "A"}
+  },
+  "populations": {
+    "european_naw": {"label": "European (North American White)", "source_id": "naw"},
+    "african_american": {"label": "African American", "source_id": "afam"},
+    "african_kenyan": {"label": "African (Kenyan)", "source_id": "kenyan"},
+    "east_asian_chinese_hk": {"label": "East Asian (Hong Kong / Han Chinese)", "source_id": "hk_chinese"},
+    "middle_eastern_iranian": {"label": "Middle Eastern (Iranian)", "source_id": "iranian"},
+    "south_asian_gujarati": {"label": "South Asian (Gujarati Indian)", "source_id": "gujarati"}
+  },
+  "sources": {
+    "naw": {"citation": "Farkas 2005; Kenyan/African-American/NAW comparison, Plast Reconstr Surg Glob Open (PMC6384287)", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6384287/"},
+    "afam": {"citation": "Kenyan/African-American/NAW comparison (PMC6384287)", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6384287/"},
+    "kenyan": {"citation": "Normative anthropometry of the Kenyan-African face (PMC6384287)", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6384287/"},
+    "hk_chinese": {"citation": "Hong Kong Chinese facial anthropometry (PMC3730197)", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3730197/"},
+    "iranian": {"citation": "Iranian facial anthropometry / sexual dimorphism (PMC5878156, PMC3074358)", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5878156/"},
+    "gujarati": {"citation": "Anthropometric review across ethnic groups incl. Gujarati Indian (PMC3074358)", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3074358/"}
+  },
+  "norms": {
+    "european_naw": {
+      "male": {"18-45": {
+        "intercanthal_width": {"mean": 33.3, "sd": 2.7},
+        "nasal_width": {"mean": 34.9, "sd": 2.1},
+        "nasal_height": {"mean": 54.8, "sd": 3.3},
+        "eye_fissure_length": {"mean": 31.3, "sd": 1.3},
+        "bizygomatic_width": {"mean": 137.0, "sd": null},
+        "mouth_width": {"mean": 54.5, "sd": 3.0}
+      }},
+      "female": {"18-45": {
+        "intercanthal_width": {"mean": 31.8, "sd": 2.3},
+        "nasal_width": {"mean": 31.4, "sd": 2.0},
+        "nasal_height": {"mean": 50.6, "sd": 3.1},
+        "eye_fissure_length": {"mean": 30.7, "sd": 1.2},
+        "bizygomatic_width": {"mean": 123.0, "sd": null},
+        "mouth_width": {"mean": 50.2, "sd": 3.5}
+      }}
+    },
+    "african_american": {
+      "male": {"18-45": {
+        "intercanthal_width": {"mean": 35.8, "sd": 2.8},
+        "nasal_width": {"mean": 44.1, "sd": 3.4},
+        "nasal_height": {"mean": 51.9, "sd": 3.0},
+        "eye_fissure_length": {"mean": 32.9, "sd": 1.7},
+        "mouth_width": {"mean": 54.6, "sd": 4.1}
+      }},
+      "female": {"18-45": {
+        "intercanthal_width": {"mean": 34.4, "sd": 0.5},
+        "nasal_width": {"mean": 40.1, "sd": 3.2},
+        "nasal_height": {"mean": 48.8, "sd": 3.7},
+        "eye_fissure_length": {"mean": 32.2, "sd": 2.0},
+        "mouth_width": {"mean": 53.6, "sd": 4.0}
+      }}
+    },
+    "african_kenyan": {
+      "male": {"18-45": {
+        "intercanthal_width": {"mean": 32.2, "sd": 1.9},
+        "nasal_width": {"mean": 43.2, "sd": 3.8},
+        "nasal_height": {"mean": 51.0, "sd": 1.9},
+        "eye_fissure_length": {"mean": 34.0, "sd": 3.4},
+        "bizygomatic_width": {"mean": 133.8, "sd": 4.6},
+        "mouth_width": {"mean": 55.9, "sd": 3.3}
+      }},
+      "female": {"18-45": {
+        "intercanthal_width": {"mean": 32.1, "sd": 1.4},
+        "nasal_width": {"mean": 40.7, "sd": 3.7},
+        "nasal_height": {"mean": 47.6, "sd": 3.1},
+        "eye_fissure_length": {"mean": 33.7, "sd": 1.5},
+        "bizygomatic_width": {"mean": 130.1, "sd": 3.5},
+        "mouth_width": {"mean": 52.0, "sd": 4.0}
+      }}
+    },
+    "east_asian_chinese_hk": {
+      "male": {"18-45": {
+        "intercanthal_width": {"mean": 40.6, "sd": 4.9},
+        "eye_fissure_length": {"mean": 27.6, "sd": 1.7}
+      }},
+      "female": {"18-45": {
+        "intercanthal_width": {"mean": 38.3, "sd": 2.6},
+        "eye_fissure_length": {"mean": 26.0, "sd": 1.8},
+        "nasal_height": {"mean": 48.9, "sd": null}
+      }}
+    },
+    "middle_eastern_iranian": {
+      "male": {"18-45": {
+        "intercanthal_width": {"mean": 30.0, "sd": 3.0},
+        "nasal_width": {"mean": 33.1, "sd": 4.9},
+        "nasal_height": {"mean": 47.4, "sd": null},
+        "bizygomatic_width": {"mean": 130.9, "sd": 4.4},
+        "facial_height": {"mean": 122.7, "sd": 10.1},
+        "mouth_width": {"mean": 44.3, "sd": null}
+      }},
+      "female": {"18-45": {
+        "intercanthal_width": {"mean": 28.7, "sd": 4.1},
+        "nasal_width": {"mean": 30.1, "sd": 5.7},
+        "nasal_height": {"mean": 49.1, "sd": null},
+        "bizygomatic_width": {"mean": 127.2, "sd": 4.2},
+        "facial_height": {"mean": 116.0, "sd": 7.6},
+        "mouth_width": {"mean": 49.1, "sd": null}
+      }}
+    },
+    "south_asian_gujarati": {
+      "male": {"18-45": {
+        "bizygomatic_width": {"mean": 130.8, "sd": null},
+        "facial_height": {"mean": 110.7, "sd": null}
+      }},
+      "female": {"18-45": {
+        "bizygomatic_width": {"mean": 123.5, "sd": null},
+        "facial_height": {"mean": 102.1, "sd": null}
+      }}
+    }
+  },
+  "ancestry_map": {
+    "european": {"population": "european_naw"},
+    "african": {"population": "african_kenyan"},
+    "african_american": {"population": "african_american"},
+    "east_asian": {"population": "east_asian_chinese_hk"},
+    "south_asian": {"population": "south_asian_gujarati"},
+    "middle_eastern": {"population": "middle_eastern_iranian"}
+  }
+}
