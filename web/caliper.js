@@ -336,15 +336,44 @@ function render(summary, sg, items, cal, img, P) {
 
 // --- input ---------------------------------------------------------------
 function loadFile(file) {
-  if (!file || !file.type.startsWith("image/")) return;
+  if (!file) { status("<span class='warn'>No image found in that drop. Click to choose, or drag from Finder.</span>"); return; }
+  if (!file.type || !file.type.startsWith("image/")) { status("<span class='warn'>That file isn't an image.</span>"); return; }
   const img = new Image();
   img.onload = () => run(img);
   img.onerror = () => status("<span class='warn'>Could not read that image.</span>");
   img.src = URL.createObjectURL(file);
 }
+
+// Resolve a dropped image to a File. Finder drags land in dataTransfer.files;
+// the macOS Photos app drags a "promised file" that only shows up in
+// dataTransfer.items (getAsFile), or as a draggable image URL. Try all three.
+// Note: items/getAsFile/getData must be read synchronously, before any await.
+async function fileFromDrop(dt) {
+  if (dt.files && dt.files.length) return dt.files[0];
+  if (dt.items) {
+    for (const it of dt.items) {
+      if (it.kind === "file") { const f = it.getAsFile(); if (f) return f; }
+    }
+  }
+  const uri = (dt.getData("text/uri-list") || dt.getData("text/plain") || "");
+  const url = uri.split("\n").map((s) => s.trim()).find((s) => /^https?:\/\//.test(s));
+  if (url) {
+    try {
+      const b = await (await fetch(url)).blob();
+      if (b.type.startsWith("image/")) return new File([b], "dropped-image", { type: b.type });
+    } catch (_) { /* cross-origin or unreachable — fall through to the hint */ }
+  }
+  return null;
+}
+
 const drop = $("drop"), file = $("file");
 drop.addEventListener("click", () => file.click());
 file.addEventListener("change", (e) => loadFile(e.target.files[0]));
 ["dragover", "dragenter"].forEach((ev) => drop.addEventListener(ev, (e) => { e.preventDefault(); drop.classList.add("hot"); }));
 ["dragleave", "drop"].forEach((ev) => drop.addEventListener(ev, (e) => { e.preventDefault(); drop.classList.remove("hot"); }));
-drop.addEventListener("drop", (e) => loadFile(e.dataTransfer.files[0]));
+drop.addEventListener("drop", async (e) => {
+  const f = await fileFromDrop(e.dataTransfer);
+  if (f) { loadFile(f); return; }
+  status("<span class='warn'>Couldn't read that drop — dragging straight from the Photos app often doesn't work in browsers. "
+    + "Drag from Finder instead, or click to choose (the file picker can reach your Photos library).</span>");
+});
