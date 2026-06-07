@@ -94,15 +94,33 @@ function metrics(Praw, mm) {
   return M;
 }
 
-function normEval(id, value, ancestry, sex) {
+// Evidence-graded mean shift for ages outside the 18-45 band (mirrors norms.py _age_shift).
+function ageShift(id, age, sex) {
+  const ae = NORMS.age_effects;
+  if (!ae || age == null) return null;
+  const eff = (ae.metrics || {})[id];
+  if (!eff) return null;
+  const ref = ae._ref_age != null ? ae._ref_age : 31;
+  let shift = eff.per_year_mm * (age - ref);
+  const m = ae._menopause || {};
+  if (m.sex && sex === m.sex && age > (m.onset_age != null ? m.onset_age : Infinity))
+    shift += eff.per_year_mm * ((m.accel_factor || 1) - 1) * (age - m.onset_age);
+  return shift;
+}
+function normEval(id, value, ancestry, sex, age) {
   const amap = NORMS.ancestry_map[ancestry];
   if (!amap) return { status: "no_population" };
   const pop = amap.population, popLabel = NORMS.populations[pop].label;
   const cell = ((((NORMS.norms[pop] || {})[sex] || {})["18-45"]) || {})[id];
   if (!cell) return { status: "no_metric", popLabel };
   if (cell.sd == null) return { status: "no_sd", popLabel, mean: cell.mean };
-  const z = (value - cell.mean) / cell.sd;
-  return { status: "ok", popLabel, percentile: pctile(z) };
+  let mean = cell.mean, ageAdjusted = false;
+  if (age != null && !(age >= 18 && age <= 45)) {
+    const shift = ageShift(id, age, sex);
+    if (shift != null) { mean = cell.mean + shift; ageAdjusted = true; }
+  }
+  const z = (value - mean) / cell.sd;
+  return { status: "ok", popLabel, percentile: pctile(z), ageAdjusted };
 }
 
 // --- skin (sclera-normalized tone) ---------------------------------------
@@ -205,7 +223,8 @@ function interpretItem(id, value, nr) {
   if (info.unreliable) standing = "not reliable from a photo";
   else if (nr.status === "ok") {
     const p = Math.round(nr.percentile), typical = p >= 15 && p <= 85;
-    standing = `${ordinal(p)} percentile for ${nr.popLabel}` + (typical ? "" : " — toward the edge, still normal");
+    const ageAdj = nr.ageAdjusted ? " (age-adjusted)" : "";
+    standing = `${ordinal(p)} percentile for ${nr.popLabel}${ageAdj}` + (typical ? "" : " — toward the edge, still normal");
     notable = !typical;
   } else if (info.bands) standing = bandLabel(value, info.bands) + " (general range)";
   else if (nr.status === "no_sd") standing = `near the ${nr.popLabel} average`;
@@ -277,12 +296,14 @@ async function run(img) {
   const data = cx.getImageData(0, 0, W, H).data;
 
   const ancestry = $("ancestry").value, sex = $("sex").value;
+  const ageRaw = parseInt($("age").value, 10);
+  const age = Number.isFinite(ageRaw) ? ageRaw : null;
   const cal = calibrate(P);
   const M = metrics(P, cal.mm);
   const skin = analyzeSkin(data, W, H, P, ancestry);
 
-  const items = ORDER.map((id) => interpretItem(id, M[id], normEval(id, M[id], ancestry, sex))).filter(Boolean);
-  const cohort = (Object.values(M).length && normEval("intercanthal_width", M.intercanthal_width, ancestry, sex).popLabel) || `${ancestry} ${sex}`;
+  const items = ORDER.map((id) => interpretItem(id, M[id], normEval(id, M[id], ancestry, sex, age))).filter(Boolean);
+  const cohort = (Object.values(M).length && normEval("intercanthal_width", M.intercanthal_width, ancestry, sex, age).popLabel) || `${ancestry} ${sex}`;
   render(summarize(items, cohort), skinGuidance(ancestry, skin), items, cal, img, P);
   status("Done — nothing was uploaded.");
 }

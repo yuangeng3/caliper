@@ -13,15 +13,15 @@
 
 ## Why this exists
 
-Face-analysis tools fail in one of three ways:
+The fact the whole project is built on: **the neoclassical "ideal" facial canons fail in 60–100% of every population studied — including the Caucasians they were derived from** (the facial-thirds canon holds in 0% of Southern Chinese and only ~37% of young Caucasians; Farkas et al.). There is no single ideal face. So Caliper measures you against *your own* (ancestry, sex, age) reference distribution — like a lab reference range — and tells you how confident it is.
 
-- **Looksmaxxing apps** (Umax, LooksMax AI) sell teenagers a black-box "you're a 4/10" against a single Eurocentric ideal — a pattern now flagged by a 2025 *Lancet Child & Adolescent Health* review as a driver of body dysmorphia.
-- **Cosmetic-surgery funnels** (Qoves) are more rigorous but cloud-based, opaque, and oriented toward "fixing" deviations from a norm. (Even Qoves now disavows the golden ratio as "a stylised Eurocentric aesthetic.")
-- **Beauty-brand skin scanners** (Haut.AI, Perfect Corp) are dermatologically real but closed, cloud-bound, and exist to sell you product.
+Everything else follows from three commitments — **honest, private, and open**:
 
-**None is simultaneously honest, ancestry/age/sex-aware, fully local, open-source, and evidence-graded.** That four-way intersection is Caliper.
+- **Honest** — a percentile within your own cohort, never a universal attractiveness score, with a cited source behind every number and a plain *"no reference for your cohort"* when the data is thin.
+- **Private** — analysis runs on your device; your face never leaves it (verifiable in your browser's Network tab).
+- **Open** — Apache-2.0, the whole pipeline readable and forkable.
 
-The foundational fact the whole project is built on: **the neoclassical "ideal" facial canons fail in 60–100% of every population studied — including the Caucasians they were derived from** (the facial-thirds canon holds in 0% of Southern Chinese and only ~37% of young Caucasians; Farkas et al.). So there is no single ideal. Caliper measures you against *your own* (ancestry, sex, age) reference distribution — like a lab reference range — and tells you how confident it is.
+There's good work in this space: Qoves brings real rigor to facial analysis, and skin scanners like Haut.AI and Perfect Corp do clinical-grade dermatology. Caliper's bet is doing all of it **at once** — honest + ancestry/age/sex-aware + fully local + open-source + evidence-graded. That combination is the gap it fills.
 
 ## What it does
 

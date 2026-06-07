@@ -176,8 +176,8 @@ Sources: [Hughes 2013 sunscreen RCT](https://www.acpjournals.org/doi/10.7326/000
 
 ## 8. Why it's built to be noticed
 
-The wedge nobody occupies: **honest + ancestry/age/sex-aware + fully local + open-source + evidence-graded.**
-Positioned explicitly against looksmaxxing apps (documented teen-dysmorphia harm) and the Qoves cloud funnel.
+The wedge nobody else occupies *all at once*: **honest + ancestry/age/sex-aware + fully local + open-source + evidence-graded.**
+Positioned by what it is — Qoves-grade analysis made private and open — not by knocking the alternatives. (The documented appearance-scoring harms for minors are why there's no overall score and why it's adults-only; see ETHICS.md.)
 Distribution lever = a one-click GitHub Pages WASM demo with a verifiable "nothing uploaded" claim.
 
 Sources: [looksmaxxing harm (Yahoo/psychologists)](https://finance.yahoo.com/news/looksmaxxing-apps-rate-teen-boys-163942148.html),
